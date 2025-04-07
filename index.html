@@ -8,85 +8,109 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome (İkonlar için) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts (Modern Tipografi) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Özel Stil -->
     <style>
         body {
-            background: linear-gradient(135deg, #1e1e2f 0%, #2a2a4a 100%);
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
         }
         .container {
-            max-width: 900px;
-            padding: 40px 20px;
+            max-width: 1000px;
+            padding: 50px 20px;
         }
-        .profile-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        .header {
+            background: linear-gradient(135deg, #6b48ff 0%, #00ddeb 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 40px;
         }
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 3px solid #00d4ff;
-            object-fit: cover;
+            border: 5px solid white;
+            transition: transform 0.3s;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
         }
         h1 {
-            font-size: 2.5rem;
-            color: #00d4ff;
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin: 10px 0;
         }
         h2 {
-            color: #fff;
-            border-bottom: 2px solid #00d4ff;
-            padding-bottom: 5px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #6b48ff;
             margin-bottom: 20px;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: #00ddeb;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
         }
         .card {
-            background: #2a2a4a;
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
+            background: white;
         }
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         .skill-badge {
-            background: #00d4ff;
-            color: #1e1e2f;
-            padding: 5px 15px;
-            border-radius: 20px;
+            background: #6b48ff;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
             margin: 5px;
             display: inline-block;
+            font-size: 0.9rem;
         }
         .btn-custom {
-            background: #00d4ff;
-            color: #1e1e2f;
+            background: #6b48ff;
+            color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: background 0.3s;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: background 0.3s, transform 0.3s;
         }
         .btn-custom:hover {
-            background: #00b4d8;
-            color: #fff;
+            background: #00ddeb;
+            transform: translateY(-2px);
+            color: white;
         }
         a {
-            color: #00d4ff;
+            color: #6b48ff;
             text-decoration: none;
         }
         a:hover {
-            color: #00b4d8;
+            color: #00ddeb;
+        }
+        .section {
+            margin-bottom: 40px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Profil Alanı -->
-        <div class="profile-card text-center mb-5">
+        <!-- Başlık Alanı -->
+        <div class="header">
             <img src="https://avatars.githubusercontent.com/u/48836900?v=4" alt="Abdulaziz Beyaz" class="profile-img mb-3">
             <h1>Abdulaziz Beyaz</h1>
             <p class="lead">Jr. Frontend Developer</p>
@@ -100,7 +124,7 @@
         <!-- Hakkımda -->
         <div class="section">
             <h2>Hakkımda</h2>
-            <p>Merhaba, ben Abdulaziz. Unity ile oyun geliştirme, Blender ile 3D modelleme ve Front-End alanlarında yetkinim; bu alanlarda sertifikalarım bulunuyor. Lisede bilişim teknolojileri eğitimi aldım ardından Hacettepe Üniversitesi Bilgisayar Öğretmenliği bölümünden mezun oldum. Eğitimim boyunca kodlama, tasarım ve oyun geliştirme gibi teknik ve yaratıcı alanlarda güçlü bir altyapı kazandım. İş tecrübem şu an sınırlı olsa da, Unity, Blender ve Web teknolojileri gibi araçlarla kendi projelerimde pratik yaparak kendimi geliştirmeye devam ediyorum. Hem kodlama hem de tasarım becerilerimle eğitim, yazılım veya oyun sektöründeki projelere değer katmaya hazırım. Öğrenmeye açık yapım ve birikimim ile, fırsat verildiğinde bu alanlarda kendimi daha da ileriye taşımayı amaçlıyorum.</p>
+            <p>Merhaba, ben Abdulaziz. Unity ile oyun geliştirme, Blender ile 3D modelleme ve Front-End alanlarında yetkinim; bu alanlarda sertifikalarım bulunuyor. Lisede bilişim teknolojileri eğitimi aldım ardından Hacettepe Üniversitesi Bilgisayar Öğretmenliği bölümünden mezun oldum. Eğitimim boyunca kodlama, tasarım ve oyun geliştirme gibi teknik ve yaratıcı alanlarda güçlü bir altyapı kazandım. İş tecrübem şu an sınırlı olsa da, Unity, Blender ve Web teknolojileri gibi araçlarla kendi projelerimde pratik yaparak kendimi geliştirmeye devam ediyorum. Hem kodlama hem de tasarım becerilerimle eğitim, yazılım veya oyun sektöründeki projelere değer katmaya hazırım.</p>
         </div>
 
         <!-- Eğitim -->
@@ -110,15 +134,15 @@
                 <div class="card-body">
                     <h5 class="card-title">Hacettepe Üniversitesi, Ankara</h5>
                     <p class="card-text">Bilgisayar ve Öğretim Teknolojileri Öğretmenliği, 2017 - 2022</p>
-                    <p>Zorunlu Dersler: Programlama Dilleri I & II, İnternet Tabanlı Programlama (HTML, CSS ve PHP), Bilgisayar Ağları ve İletişim, İşletim Sistemleri ve Uygulamaları, Proje Geliştirme ve Yönetimi I & II</p>
-                    <p>Seçmeli Dersler: Algoritma (C#), Enformasyon Tasarımı (İnfografik), Bilişim Yönetim Uygulaması (.Net Core), Eğitsel Oyun ve Oyunlaştırma (Unity, C#), Eğitim Yazılımı Tasarlama</p>
+                    <p>Zorunlu Dersler: Programlama Dilleri I & II, İnternet Tabanlı Programlama (HTML, CSS ve PHP), Bilgisayar Ağları ve İletişim</p>
+                    <p>Seçmeli Dersler: Algoritma (C#), Eğitsel Oyun ve Oyunlaştırma (Unity, C#), Eğitim Yazılımı Tasarlama</p>
                 </div>
             </div>
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Antalya Mesleki ve Teknik Anadolu Lisesi, Antalya</h5>
                     <p class="card-text">Bilişim Teknolojileri (Ağ İşletmenliği Dalı), 2012 - 2016</p>
-                    <p>Alınan Dersler: Ağ Sistemleri ve Yönlendirme, Sunucu İşletim Sistemi, Açık Kaynak İşletim Sistemi, Bilişim Teknolojilerinin Temelleri, Programlama Temelleri</p>
+                    <p>Alınan Dersler: Ağ Sistemleri ve Yönlendirme, Sunucu İşletim Sistemi, Programlama Temelleri</p>
                 </div>
             </div>
         </div>
@@ -130,28 +154,28 @@
                 <div class="card-body">
                     <h5 class="card-title">Jandarma ve Sahil Güvenlik Akademisi, Ankara</h5>
                     <p class="card-text">Asteğmen (Yedek Subay), Aralık 2023 - Kasım 2024</p>
-                    <p>Kültür ve Spor Şube Müdürlüğü’nde Öğrenci Toplulukları ve Etkinlikleri Subayı olarak 11 ay görev yaptım. Organizasyon, planlama ve ekip koordinasyonu becerilerimi geliştirdim.</p>
+                    <p>Kültür ve Spor Şube Müdürlüğü’nde Öğrenci Toplulukları ve Etkinlikleri Subayı olarak görev yaptım.</p>
                 </div>
             </div>
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Münevver Öztürk Ortaokulu, Ankara</h5>
                     <p class="card-text">Stajyer Bilişim Teknolojileri ve Yazılım Öğretmeni, Şubat 2020 - Mayıs 2021</p>
-                    <p>Ortaokul öğrencilerine Scratch ile kodlama ve Tinkercad ile 3D modelleme eğitimi verdim. Eğitsel içerik oluşturma ve öğretim tasarımı deneyimim arttı.</p>
+                    <p>Scratch ile kodlama ve Tinkercad ile 3D modelleme eğitimi verdim.</p>
                 </div>
             </div>
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Yasemin Karakaya Ortaokulu, Ankara</h5>
                     <p class="card-text">Stajyer Bilişim Teknolojileri ve Yazılım Öğretmeni, Ekim 2020 - Ocak 2021</p>
-                    <p>Bilişim derslerinde gözlem yaparak öğretim yöntemlerini ve sınıf yönetimini deneyimledim.</p>
+                    <p>Bilişim derslerinde öğretim yöntemlerini deneyimledim.</p>
                 </div>
             </div>
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Akdeniz Elektrik Dağıtım A.Ş, Antalya</h5>
                     <p class="card-text">Bilgi İşlem Stajyeri, Ocak 2016 - Mayıs 2016</p>
-                    <p>Yazıcı, ethernet ve bilgisayar arızalarını tespit edip çözerek temel teknik destek becerileri kazandım.</p>
+                    <p>Yazıcı ve bilgisayar arızalarını çözerek teknik destek becerileri kazandım.</p>
                 </div>
             </div>
         </div>
@@ -164,7 +188,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Bilgisayar ve Mobil Oyunlardaki Siber Zorbalık ve Tehditler</h5>
-                            <p class="card-text">Mobil uygulama ile siber zorbalık farkındalığı (Eylül 2021 - Ocak 2022).</p>
+                            <p class="card-text">Siber zorbalık farkındalık mobil uygulaması (2021-2022).</p>
                             <a href="https://drive.google.com/drive/folders/12y8UYsjYsVzaM2TYc3Q-uJJGKu2fGqsO" target="_blank" class="btn btn-custom">Projeyi Gör</a>
                         </div>
                     </div>
@@ -173,7 +197,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Space Platform</h5>
-                            <p class="card-text">Unity ile 2D algoritma öğrenme oyunu (Eylül 2021 - Ocak 2022).</p>
+                            <p class="card-text">Unity ile 2D algoritma oyunu (2021-2022).</p>
                             <a href="https://drive.google.com/drive/folders/1AgOfjXLm6hpCMTx6UI1krf9SDRn6Jvgj" target="_blank" class="btn btn-custom">Projeyi Gör</a>
                         </div>
                     </div>
@@ -182,7 +206,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Hayat Trafiği Oyunu</h5>
-                            <p class="card-text">Unity ile 2D trafik eğitimi oyunu (Ocak 2018 - Haziran 2019).</p>
+                            <p class="card-text">Unity ile 2D trafik eğitimi oyunu (2018-2019).</p>
                             <a href="https://drive.google.com/drive/folders/1XtAd2Iqquux1564iSFTwxlPEfrPbzOaQ" target="_blank" class="btn btn-custom">Projeyi Gör</a>
                         </div>
                     </div>
@@ -206,9 +230,6 @@
                 <span class="skill-badge">Blender</span>
                 <span class="skill-badge">3DS Max</span>
                 <span class="skill-badge">Unity</span>
-                <span class="skill-badge">Frontend Tasarımı</span>
-                <span class="skill-badge">Eğitsel Oyun</span>
-                <span class="skill-badge">Mobil Uygulama Tasarımı</span>
             </div>
         </div>
 
@@ -224,19 +245,19 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Sıfırdan İleri Düzey Web Programlama - Techcareer.net</h5>
-                    <p class="card-text">12 Şubat 2025 (HTML5, CSS3, Bootstrap5, Tailwind, Javascript)</p>
+                    <p class="card-text">12 Şubat 2025</p>
                 </div>
             </div>
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Bilgisayar Destekli Üç Boyutlu Tasarım ve Animasyon - BELTEK</h5>
-                    <p class="card-text">15 Haziran 2022 (108 Saat, Autodesk 3ds Max)</p>
+                    <h5 class="card-title">Bilgisayar Destekli Üç Boyutlu Tasarım - BELTEK</h5>
+                    <p class="card-text">15 Haziran 2022</p>
                 </div>
             </div>
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Görsel Programlama Kursu - BELTEK</h5>
-                    <p class="card-text">15 Mart 2022 (108 Saat, C# ve .NET)</p>
+                    <p class="card-text">15 Mart 2022</p>
                 </div>
             </div>
         </div>
