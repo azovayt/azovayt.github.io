@@ -1,168 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-  <title></title>
-  <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
-
-  body {
-    background: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  canvas {
-    border: 1px solid white;
-  }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Adın] - CV</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Özel Stil -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .header-img {
+            max-width: 150px;
+            border-radius: 50%;
+        }
+        .section {
+            margin-top: 30px;
+        }
+        .card {
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.02);
+        }
+    </style>
 </head>
 <body>
-<canvas width="400" height="400" id="game"></canvas>
-<script>
-var canvas = document.getElementById('game');
-var context = canvas.getContext('2d');
+    <div class="container my-5">
+        <!-- Başlık Alanı -->
+        <div class="text-center mb-5">
+            <img src="https://via.placeholder.com/150" alt="Profil Fotoğrafı" class="header-img mb-3">
+            <h1 class="display-4">[Adın Soyadın]</h1>
+            <p class="lead">[Meslek/Unvan - Örnek: "Yazılım Geliştirici | Teknoloji Meraklısı"]</p>
+        </div>
 
-var grid = 16;
-var count = 0;
-  
-var snake = {
-  x: 160,
-  y: 160,
-  
-  // snake velocity. moves one grid length every frame in either the x or y direction
-  dx: grid,
-  dy: 0,
-  
-  // keep track of all grids the snake body occupies
-  cells: [],
-  
-  // length of the snake. grows when eating an apple
-  maxCells: 4
-};
-var apple = {
-  x: 320,
-  y: 320
-};
+        <!-- Hakkımda -->
+        <div class="section">
+            <h2 class="border-bottom pb-2">Hakkımda</h2>
+            <p>[Kısa tanıtım: "İstanbul'da yaşayan bir yazılım geliştiriciyim. Yeni teknolojileri öğrenmeyi ve açık kaynak projelerde yer almayı seviyorum."]</p>
+        </div>
 
-// get random whole numbers in a specific range
-// @see https://stackoverflow.com/a/1527820/2124254
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+        <!-- Eğitim -->
+        <div class="section">
+            <h2 class="border-bottom pb-2">Eğitim</h2>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">[Okul Adı - Örnek: "İstanbul Teknik Üniversitesi"]</h5>
+                    <p class="card-text">[Bölüm ve Tarih - Örnek: "Bilgisayar Mühendisliği, 2020-2024"]</p>
+                </div>
+            </div>
+            <!-- Daha fazla eğitim eklemek istersen burayı kopyala -->
+        </div>
 
-// game loop
-function loop() {
-  requestAnimationFrame(loop);
+        <!-- İş Deneyimi -->
+        <div class="section">
+            <h2 class="border-bottom pb-2">İş Deneyimi</h2>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">[İş Yeri - Örnek: "ABC Teknoloji"]</h5>
+                    <p class="card-text">[Pozisyon ve Tarih - Örnek: "Yazılım Stajyeri, Haziran 2023 - Ağustos 2023"]</p>
+                    <p>[Görevler - Örnek: "Web uygulamaları geliştirdim ve veritabanı optimizasyonu yaptım."]</p>
+                </div>
+            </div>
+            <!-- Daha fazla iş deneyimi ekleyebilirsin -->
+        </div>
 
-  // slow game loop to 15 fps instead of 60 (60/15 = 4)
-  if (++count < 4) {
-    return;
-  }
+        <!-- Projeler -->
+        <div class="section">
+            <h2 class="border-bottom pb-2">Projelerim</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">[Proje Adı 1]</h5>
+                            <p class="card-text">[Açıklama - Örnek: "Python ile yazılmış bir kelime oyunu."]</p>
+                            <a href="[Link varsa]" target="_blank" class="btn btn-primary">Projeyi Gör</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">[Proje Adı 2]</h5>
+                            <p class="card-text">[Açıklama - Örnek: "Bootstrap ile responsive bir portföy sitesi."]</p>
+                            <a href="[Link varsa]" target="_blank" class="btn btn-primary">Projeyi Gör</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  count = 0;
-  context.clearRect(0,0,canvas.width,canvas.height);
+        <!-- Yetenekler -->
+        <div class="section">
+            <h2 class="border-bottom pb-2">Yetenekler</h2>
+            <ul class="list-group">
+                <li class="list-group-item">[Yetenek 1 - Örnek: "Python (Orta Seviye)"]</li>
+                <li class="list-group-item">[Yetenek 2 - Örnek: "HTML/CSS (İleri Seviye)"]</li>
+                <li class="list-group-item">[Yetenek 3 - Örnek: "JavaScript (Başlangıç)"]</li>
+                <!-- Daha fazla yetenek ekleyebilirsin -->
+            </ul>
+        </div>
 
-  // move snake by it's velocity
-  snake.x += snake.dx;
-  snake.y += snake.dy;
+        <!-- İletişim -->
+        <div class="section text-center">
+            <h2 class="border-bottom pb-2">İletişim</h2>
+            <p>
+                E-posta: <a href="mailto:[e-posta adresin]">[e-posta adresin]</a> <br>
+                GitHub: <a href="https://github.com/[kullanıcıadın]" target="_blank">[kullanıcıadın]</a> <br>
+                [İstersen LinkedIn veya başka bir sosyal medya linki ekleyebilirsin]
+            </p>
+        </div>
+    </div>
 
-  // wrap snake position horizontally on edge of screen
-  if (snake.x < 0) {
-    snake.x = canvas.width - grid;
-  }
-  else if (snake.x >= canvas.width) {
-    snake.x = 0;
-  }
-  
-  // wrap snake position vertically on edge of screen
-  if (snake.y < 0) {
-    snake.y = canvas.height - grid;
-  }
-  else if (snake.y >= canvas.height) {
-    snake.y = 0;
-  }
-
-  // keep track of where snake has been. front of the array is always the head
-  snake.cells.unshift({x: snake.x, y: snake.y});
-
-  // remove cells as we move away from them
-  if (snake.cells.length > snake.maxCells) {
-    snake.cells.pop();
-  }
-
-  // draw apple
-  context.fillStyle = 'red';
-  context.fillRect(apple.x, apple.y, grid-1, grid-1);
-
-  // draw snake one cell at a time
-  context.fillStyle = 'green';
-  snake.cells.forEach(function(cell, index) {
-    
-    // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
-    context.fillRect(cell.x, cell.y, grid-1, grid-1);  
-
-    // snake ate apple
-    if (cell.x === apple.x && cell.y === apple.y) {
-      snake.maxCells++;
-
-      // canvas is 400x400 which is 25x25 grids 
-      apple.x = getRandomInt(0, 25) * grid;
-      apple.y = getRandomInt(0, 25) * grid;
-    }
-
-    // check collision with all cells after this one (modified bubble sort)
-    for (var i = index + 1; i < snake.cells.length; i++) {
-      
-      // snake occupies same space as a body part. reset game
-      if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        snake.x = 160;
-        snake.y = 160;
-        snake.cells = [];
-        snake.maxCells = 4;
-        snake.dx = grid;
-        snake.dy = 0;
-
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
-      }
-    }
-  });
-}
-
-// listen to keyboard events to move the snake
-document.addEventListener('keydown', function(e) {
-  // prevent snake from backtracking on itself by checking that it's 
-  // not already moving on the same axis (pressing left while moving
-  // left won't do anything, and pressing right while moving left
-  // shouldn't let you collide with your own body)
-  
-  // left arrow key
-  if (e.which === 37 && snake.dx === 0) {
-    snake.dx = -grid;
-    snake.dy = 0;
-  }
-  // up arrow key
-  else if (e.which === 38 && snake.dy === 0) {
-    snake.dy = -grid;
-    snake.dx = 0;
-  }
-  // right arrow key
-  else if (e.which === 39 && snake.dx === 0) {
-    snake.dx = grid;
-    snake.dy = 0;
-  }
-  // down arrow key
-  else if (e.which === 40 && snake.dy === 0) {
-    snake.dy = grid;
-    snake.dx = 0;
-  }
-});
-
-// start the game
-requestAnimationFrame(loop);
-</script>
+    <!-- Bootstrap JS (Opsiyonel, etkileşim için) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
