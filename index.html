@@ -3,89 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Adın] - CV</title>
+    <title>Abdulaziz Beyaz - CV</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome (İkonlar için) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Özel Stil -->
     <style>
         body {
-            background-color: #f8f9fa;
-            color: #333;
+            background: linear-gradient(135deg, #1e1e2f 0%, #2a2a4a 100%);
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .header-img {
-            max-width: 150px;
+        .container {
+            max-width: 900px;
+            padding: 40px 20px;
+        }
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
+            border: 3px solid #00d4ff;
+            object-fit: cover;
         }
-        .section {
-            margin-top: 30px;
+        h1 {
+            font-size: 2.5rem;
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        h2 {
+            color: #fff;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
         }
         .card {
-            transition: transform 0.2s;
+            background: #2a2a4a;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .card:hover {
-            transform: scale(1.02);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .skill-badge {
+            background: #00d4ff;
+            color: #1e1e2f;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .btn-custom {
+            background: #00d4ff;
+            color: #1e1e2f;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background 0.3s;
+        }
+        .btn-custom:hover {
+            background: #00b4d8;
+            color: #fff;
+        }
+        a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #00b4d8;
         }
     </style>
 </head>
 <body>
-    <div class="container my-5">
-        <!-- Başlık Alanı -->
-        <div class="text-center mb-5">
-            <img src="https://via.placeholder.com/150" alt="Profil Fotoğrafı" class="header-img mb-3">
-            <h1 class="display-4">[Adın Soyadın]</h1>
-            <p class="lead">[Meslek/Unvan - Örnek: "Yazılım Geliştirici | Teknoloji Meraklısı"]</p>
+    <div class="container">
+        <!-- Profil Alanı -->
+        <div class="profile-card text-center mb-5">
+            <img src="https://via.placeholder.com/120" alt="Abdulaziz Beyaz" class="profile-img mb-3">
+            <h1>Abdulaziz Beyaz</h1>
+            <p class="lead">Jr. Frontend Developer</p>
+            <p>
+                <i class="fas fa-map-marker-alt"></i> Antalya | 
+                <i class="fas fa-phone"></i> 000 | 
+                <i class="fas fa-envelope"></i> <a href="mailto:azizbeyazz@gmail.com">azizbeyazz@gmail.com</a>
+            </p>
         </div>
 
         <!-- Hakkımda -->
         <div class="section">
-            <h2 class="border-bottom pb-2">Hakkımda</h2>
-            <p>[Kısa tanıtım: "İstanbul'da yaşayan bir yazılım geliştiriciyim. Yeni teknolojileri öğrenmeyi ve açık kaynak projelerde yer almayı seviyorum."]</p>
+            <h2>Hakkımda</h2>
+            <p>Merhaba, ben Abdulaziz. Unity ile oyun geliştirme, Blender ile 3D modelleme ve Front-End alanlarında yetkinim; bu alanlarda sertifikalarım bulunuyor. Lisede bilişim teknolojileri eğitimi aldım ardından Hacettepe Üniversitesi Bilgisayar Öğretmenliği bölümünden mezun oldum. Eğitimim boyunca kodlama, tasarım ve oyun geliştirme gibi teknik ve yaratıcı alanlarda güçlü bir altyapı kazandım. İş tecrübem şu an sınırlı olsa da, Unity, Blender ve Web teknolojileri gibi araçlarla kendi projelerimde pratik yaparak kendimi geliştirmeye devam ediyorum. Hem kodlama hem de tasarım becerilerimle eğitim, yazılım veya oyun sektöründeki projelere değer katmaya hazırım. Öğrenmeye açık yapım ve birikimim ile, fırsat verildiğinde bu alanlarda kendimi daha da ileriye taşımayı amaçlıyorum.</p>
         </div>
 
         <!-- Eğitim -->
         <div class="section">
-            <h2 class="border-bottom pb-2">Eğitim</h2>
+            <h2>Eğitim</h2>
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">[Okul Adı - Örnek: "İstanbul Teknik Üniversitesi"]</h5>
-                    <p class="card-text">[Bölüm ve Tarih - Örnek: "Bilgisayar Mühendisliği, 2020-2024"]</p>
+                    <h5 class="card-title">Hacettepe Üniversitesi, Ankara</h5>
+                    <p class="card-text">Bilgisayar ve Öğretim Teknolojileri Öğretmenliği, 2017 - 2022</p>
+                    <p>Zorunlu Dersler: Programlama Dilleri I & II, İnternet Tabanlı Programlama (HTML, CSS ve PHP), Bilgisayar Ağları ve İletişim, İşletim Sistemleri ve Uygulamaları, Proje Geliştirme ve Yönetimi I & II</p>
+                    <p>Seçmeli Dersler: Algoritma (C#), Enformasyon Tasarımı (İnfografik), Bilişim Yönetim Uygulaması (.Net Core), Eğitsel Oyun ve Oyunlaştırma (Unity, C#), Eğitim Yazılımı Tasarlama</p>
                 </div>
             </div>
-            <!-- Daha fazla eğitim eklemek istersen burayı kopyala -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Antalya Mesleki ve Teknik Anadolu Lisesi, Antalya</h5>
+                    <p class="card-text">Bilişim Teknolojileri (Ağ İşletmenliği Dalı), 2012 - 2016</p>
+                    <p>Alınan Dersler: Ağ Sistemleri ve Yönlendirme, Sunucu İşletim Sistemi, Açık Kaynak İşletim Sistemi, Bilişim Teknolojilerinin Temelleri, Programlama Temelleri</p>
+                </div>
+            </div>
         </div>
 
         <!-- İş Deneyimi -->
         <div class="section">
-            <h2 class="border-bottom pb-2">İş Deneyimi</h2>
+            <h2>İş Deneyimi</h2>
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">[İş Yeri - Örnek: "ABC Teknoloji"]</h5>
-                    <p class="card-text">[Pozisyon ve Tarih - Örnek: "Yazılım Stajyeri, Haziran 2023 - Ağustos 2023"]</p>
-                    <p>[Görevler - Örnek: "Web uygulamaları geliştirdim ve veritabanı optimizasyonu yaptım."]</p>
+                    <h5 class="card-title">Jandarma ve Sahil Güvenlik Akademisi, Ankara</h5>
+                    <p class="card-text">Asteğmen (Yedek Subay), Aralık 2023 - Kasım 2024</p>
+                    <p>Kültür ve Spor Şube Müdürlüğü’nde Öğrenci Toplulukları ve Etkinlikleri Subayı olarak 11 ay görev yaptım. Organizasyon, planlama ve ekip koordinasyonu becerilerimi geliştirdim.</p>
                 </div>
             </div>
-            <!-- Daha fazla iş deneyimi ekleyebilirsin -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Münevver Öztürk Ortaokulu, Ankara</h5>
+                    <p class="card-text">Stajyer Bilişim Teknolojileri ve Yazılım Öğretmeni, Şubat 2020 - Mayıs 2021</p>
+                    <p>Ortaokul öğrencilerine Scratch ile kodlama ve Tinkercad ile 3D modelleme eğitimi verdim. Eğitsel içerik oluşturma ve öğretim tasarımı deneyimim arttı.</p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Yasemin Karakaya Ortaokulu, Ankara</h5>
+                    <p class="card-text">Stajyer Bilişim Teknolojileri ve Yazılım Öğretmeni, Ekim 2020 - Ocak 2021</p>
+                    <p>Bilişim derslerinde gözlem yaparak öğretim yöntemlerini ve sınıf yönetimini deneyimledim.</p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Akdeniz Elektrik Dağıtım A.Ş, Antalya</h5>
+                    <p class="card-text">Bilgi İşlem Stajyeri, Ocak 2016 - Mayıs 2016</p>
+                    <p>Yazıcı, ethernet ve bilgisayar arızalarını tespit edip çözerek temel teknik destek becerileri kazandım.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Projeler -->
         <div class="section">
-            <h2 class="border-bottom pb-2">Projelerim</h2>
+            <h2>Projelerim</h2>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">[Proje Adı 1]</h5>
-                            <p class="card-text">[Açıklama - Örnek: "Python ile yazılmış bir kelime oyunu."]</p>
-                            <a href="[Link varsa]" target="_blank" class="btn btn-primary">Projeyi Gör</a>
+                            <h5 class="card-title">Bilgisayar ve Mobil Oyunlardaki Siber Zorbalık ve Tehditler</h5>
+                            <p class="card-text">Mobil uygulama ile siber zorbalık farkındalığı (Eylül 2021 - Ocak 2022).</p>
+                            <a href="https://drive.google.com/drive/folders/12y8UYsjYsVzaM2TYc3Q-uJJGKu2fGqsO" target="_blank" class="btn btn-custom">Projeyi Gör</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">[Proje Adı 2]</h5>
-                            <p class="card-text">[Açıklama - Örnek: "Bootstrap ile responsive bir portföy sitesi."]</p>
-                            <a href="[Link varsa]" target="_blank" class="btn btn-primary">Projeyi Gör</a>
+                            <h5 class="card-title">Space Platform</h5>
+                            <p class="card-text">Unity ile 2D algoritma öğrenme oyunu (Eylül 2021 - Ocak 2022).</p>
+                            <a href="https://drive.google.com/drive/folders/1AgOfjXLm6hpCMTx6UI1krf9SDRn6Jvgj" target="_blank" class="btn btn-custom">Projeyi Gör</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Hayat Trafiği Oyunu</h5>
+                            <p class="card-text">Unity ile 2D trafik eğitimi oyunu (Ocak 2018 - Haziran 2019).</p>
+                            <a href="https://drive.google.com/drive/folders/1XtAd2Iqquux1564iSFTwxlPEfrPbzOaQ" target="_blank" class="btn btn-custom">Projeyi Gör</a>
                         </div>
                     </div>
                 </div>
@@ -94,27 +192,68 @@
 
         <!-- Yetenekler -->
         <div class="section">
-            <h2 class="border-bottom pb-2">Yetenekler</h2>
-            <ul class="list-group">
-                <li class="list-group-item">[Yetenek 1 - Örnek: "Python (Orta Seviye)"]</li>
-                <li class="list-group-item">[Yetenek 2 - Örnek: "HTML/CSS (İleri Seviye)"]</li>
-                <li class="list-group-item">[Yetenek 3 - Örnek: "JavaScript (Başlangıç)"]</li>
-                <!-- Daha fazla yetenek ekleyebilirsin -->
-            </ul>
+            <h2>Yetenekler</h2>
+            <div>
+                <span class="skill-badge">React Native</span>
+                <span class="skill-badge">React.js</span>
+                <span class="skill-badge">JavaScript/TypeScript</span>
+                <span class="skill-badge">HTML5</span>
+                <span class="skill-badge">CSS3</span>
+                <span class="skill-badge">Bootstrap</span>
+                <span class="skill-badge">Tailwind</span>
+                <span class="skill-badge">Scratch</span>
+                <span class="skill-badge">Tinkercad</span>
+                <span class="skill-badge">Blender</span>
+                <span class="skill-badge">3DS Max</span>
+                <span class="skill-badge">Unity</span>
+                <span class="skill-badge">Frontend Tasarımı</span>
+                <span class="skill-badge">Eğitsel Oyun</span>
+                <span class="skill-badge">Mobil Uygulama Tasarımı</span>
+            </div>
+        </div>
+
+        <!-- Sertifikalar -->
+        <div class="section">
+            <h2>Sertifikalar</h2>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Javascript Temelleri - BTK Akademi</h5>
+                    <p class="card-text">20 Şubat 2025</p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Sıfırdan İleri Düzey Web Programlama - Techcareer.net</h5>
+                    <p class="card-text">12 Şubat 2025 (HTML5, CSS3, Bootstrap5, Tailwind, Javascript)</p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Bilgisayar Destekli Üç Boyutlu Tasarım ve Animasyon - BELTEK</h5>
+                    <p class="card-text">15 Haziran 2022 (108 Saat, Autodesk 3ds Max)</p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Görsel Programlama Kursu - BELTEK</h5>
+                    <p class="card-text">15 Mart 2022 (108 Saat, C# ve .NET)</p>
+                </div>
+            </div>
         </div>
 
         <!-- İletişim -->
         <div class="section text-center">
-            <h2 class="border-bottom pb-2">İletişim</h2>
+            <h2>İletişim</h2>
             <p>
-                E-posta: <a href="mailto:[e-posta adresin]">[e-posta adresin]</a> <br>
-                GitHub: <a href="https://github.com/[kullanıcıadın]" target="_blank">[kullanıcıadın]</a> <br>
-                [İstersen LinkedIn veya başka bir sosyal medya linki ekleyebilirsin]
+                <i class="fas fa-envelope"></i> <a href="mailto:azizbeyazz@gmail.com">azizbeyazz@gmail.com</a> <br>
+                <i class="fab fa-github"></i> <a href="https://github.com/azovayt" target="_blank">azovayt</a> <br>
+                <i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/azovayt" target="_blank">azovayt</a> <br>
+                <i class="fab fa-artstation"></i> <a href="https://artstation.com/azovayt" target="_blank">azovayt</a>
             </p>
         </div>
     </div>
 
-    <!-- Bootstrap JS (Opsiyonel, etkileşim için) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
