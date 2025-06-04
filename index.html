@@ -1,288 +1,521 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulaziz Beyaz - Kişisel Web Sitesi | Jr. Frontend Developer | React | React Native
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Abdulaziz Beyaz - Kişisel Web Sitesi | Jr. Frontend Developer | React |
+      React Native
     </title>
-    <meta name="description" content="Abdulaziz Beyaz'ın resmi web sitesi. Hakkımda, projelerim ve iletişim bilgileri burada.">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta
+      name="description"
+      content="Abdulaziz Beyaz'ın resmi web sitesi. Hakkımda, projelerim ve iletişim bilgileri burada."
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Poppins) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- Font Awesome (İkonlar için) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts (Modern Tipografi) -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Özel Stil -->
-    <style>
-        body {
-            background: #f5f7fa;
-            color: #333;
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 1000px;
-            padding: 50px 20px;
-        }
-        .header {
-            background: linear-gradient(135deg, #6b48ff 0%, #00ddeb 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid white;
-            transition: transform 0.3s;
-        }
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin: 10px 0;
-        }
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #6b48ff;
-            margin-bottom: 20px;
-        }
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            background: white;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        .skill-badge {
-            background: #6b48ff;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 25px;
-            margin: 5px;
-            display: inline-block;
-            font-size: 0.9rem;
-        }
-        .btn-custom {
-            background: #6b48ff;
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 30px;
-            transition: background 0.3s, transform 0.3s;
-        }
-        .btn-custom:hover {
-            background: #00ddeb;
-            transform: translateY(-2px);
-            color: white;
-        }
-        a {
-            color: white;
-            text-decoration: none;
-        }
-        a:hover {
-            color: #00ddeb;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
-        .contact-links a {
-            margin: 0 15px;
-            font-size: 1.1rem;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Başlık Alanı -->
-        <div class="header">
-            <img src="https://avatars.githubusercontent.com/u/48836900?v=4" alt="Abdulaziz Beyaz" class="profile-img mb-3">
-            <h1>Abdulaziz Beyaz</h1>
-            <p class="lead">Jr. Frontend Developer | React | React Native</p>
-            <p>
-                <i class="fas fa-map-marker-alt"></i> Antalya |  
-                <a href="https://instagram.com/azovayt" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="https://github.com/azovayt" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://linkedin.com/in/azovayt" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://artstation.com/azovayt" target="_blank"><i class="fab fa-artstation"></i> ArtStation</a>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Tailwind CSS Custom Configuration for Poppins Font -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+            colors: {
+              "primary-purple": "#6b48ff",
+              "primary-cyan": "#00ddeb",
+              "light-gray": "#f5f7fa",
+              "dark-text": "#333",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-light-gray text-dark-text font-poppins leading-relaxed">
+    <div class="container mx-auto max-w-5xl px-4 py-8 md:px-6 md:py-12">
+      <!-- Başlık Alanı -->
+      <header
+        class="bg-gradient-to-br from-primary-purple to-primary-cyan text-white p-8 md:p-10 rounded-2xl shadow-xl text-center mb-10"
+      >
+        <img
+          src="https://avatars.githubusercontent.com/u/48836900?v=4"
+          alt="Abdulaziz Beyaz"
+          class="profile-img w-36 h-36 rounded-full border-4 border-white mx-auto mb-4 transition-transform duration-300 hover:scale-105"
+        />
+        <h1 class="text-4xl md:text-5xl font-bold mt-2 mb-1">
+          Abdulaziz Beyaz
+        </h1>
+        <p class="text-xl md:text-2xl font-light mb-4">
+          Jr. Frontend Developer | React | React Native
+        </p>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-lg">
+          <span class="flex items-center"
+            ><i class="fas fa-map-marker-alt mr-2"></i> Antalya</span
+          >
+          <a
+            href="https://instagram.com/azovayt"
+            target="_blank"
+            class="text-white hover:text-primary-cyan transition-colors duration-300 flex items-center"
+            ><i class="fab fa-instagram mr-2"></i> Instagram</a
+          >
+          <a
+            href="https://github.com/azovayt"
+            target="_blank"
+            class="text-white hover:text-primary-cyan transition-colors duration-300 flex items-center"
+            ><i class="fab fa-github mr-2"></i> GitHub</a
+          >
+          <a
+            href="https://linkedin.com/in/azovayt"
+            target="_blank"
+            class="text-white hover:text-primary-cyan transition-colors duration-300 flex items-center"
+            ><i class="fab fa-linkedin mr-2"></i> LinkedIn</a
+          >
+          <a
+            href="https://artstation.com/azovayt"
+            target="_blank"
+            class="text-white hover:text-primary-cyan transition-colors duration-300 flex items-center"
+            ><i class="fab fa-artstation mr-2"></i> ArtStation</a
+          >
+        </div>
+      </header>
+
+      <!-- Hakkımda -->
+      <section class="section mb-10 p-6 bg-white rounded-xl shadow-md">
+        <h2 class="text-3xl font-semibold text-primary-purple mb-6">
+          Hakkımda
+        </h2>
+        <p class="mb-4">
+          Merhaba! Ben Abdulaziz BEYAZ, Hacettepe Üniversitesi Bilgisayar ve
+          Öğretim Teknolojileri Öğretmenliği mezunu bir Jr. Frontend
+          Developer'ım. HTML5, CSS3, JavaScript ve React.js gibi temel frontend
+          teknolojilerinde yetkinim; Bootstrap ve Tailwind CSS ile kullanıcı
+          dostu arayüzler tasarlayabiliyorum. React Native ile mobil uygulama
+          geliştirme alanında da bilgi sahibiyim ve bu alanda aktif olarak
+          projeler üretiyorum.
+        </p>
+        <p class="mb-4">
+          Aldığım "Sıfırdan İleri Düzey Web Programlama" (Techcareer.net),
+          "JavaScript Temelleri" (BTK Akademi) ve "108 Saatlik Görsel
+          Programlama" (BELTEK) sertifikaları, teknik becerilerimi pekiştirdi.
+          Lisedeki bilişim teknolojileri eğitimim bu alana olan ilgimin
+          temellerini atarken, Unity ve Blender gibi araçlarla da farklı
+          projelerde deneyim kazandım. Kişisel projelerimle frontend ve mobil
+          geliştirme alanlarındaki yetkinliklerimi sürekli geliştiriyorum.
+          Öğrenmeye açık ve disiplinli bir yaklaşımla, web ve mobil projelerde
+          kendimi sürekli ileriye taşımayı hedefliyorum.
+        </p>
+        <p>
+          Jandarma ve Sahil Güvenlik Akademisi’nde Asteğmen olarak görev
+          yaptığım 11 ay boyunca, Eğitim Öğretim Daire Başkanlığı, Kültür ve
+          Spor Şube Müdürlüğü’nde Öğrenci Toplulukları ve Etkinlikleri Subayı
+          olarak yüzlerce öğrencinin katıldığı kültürel, sosyal ve sportif
+          etkinlikleri başarıyla planladım, koordine ettim ve yönettim. Dış
+          kurumlarla etkin iletişim kurarak öğrencilerin sosyal etkinliklere
+          katılımını sağladım. Deneyimim olmadan başladığım bu rolde, liderlik,
+          kriz yönetimi ve ekip koordinasyonu becerilerimi hızla geliştirerek
+          karmaşık projeleri tamamladım ve amirlerimden takdir belgesi kazandım.
+          Bu deneyim, yazılım geliştirme süreçlerinde kritik olan proje
+          yönetimi, paydaşlarla iletişim ve problem çözme yetkinliklerimi önemli
+          ölçüde güçlendirdi. Tüm bu becerilerimi web ve mobil projelerde
+          disiplinli ve çözüm odaklı bir şekilde uygulamaya hazırım.
+        </p>
+      </section>
+
+      <!-- İş Deneyimi -->
+      <section class="section mb-10 p-6 bg-white rounded-xl shadow-md">
+        <h2 class="text-3xl font-semibold text-primary-purple mb-6">
+          İş Deneyimi
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Deneyim 1 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Asteğmen (Yedek Subay)
+            </h3>
+            <p class="text-primary-purple text-lg mb-1">
+              Jandarma ve Sahil Güvenlik Akademisi, Ankara
             </p>
-        </div>
-
-        <!-- Hakkımda -->
-        <div class="section">
-            <h2>Hakkımda</h2>
-            <p>
-                Ben Abdulaziz Beyaz, Hacettepe Üniversitesi Bilgisayar ve Öğretim Teknolojileri Öğretmenliği bölümünden mezun bir Junior Frontend Developer’ım. HTML5, CSS3, JavaScript ve React.js gibi teknolojilerde yetkinim; Bootstrap ve Tailwind CSS kullanarak kullanıcı dostu arayüzler tasarlayabiliyorum. React Native ile mobil uygulama geliştirme konusunda da bilgi sahibiyim ve bu alanda projeler üretiyorum.
+            <p class="text-gray-600 text-sm mb-3">Aralık 2023 - Kasım 2024</p>
+            <p class="text-gray-700">
+              11 ay askerlik hizmetimi Kültür ve Spor Şube Müdürlüğü’nde Öğrenci
+              Toplulukları ve Etkinlikleri Subayı olarak, yüzlerce öğrencinin
+              katıldığı kültürel, sosyal ve sportif etkinlikleri planladım,
+              koordine ettim ve yönettim; dış kurumlarla iletişim kurarak
+              öğrencilerin sosyal ve kültürel etkinliklere ücretsiz katılımını
+              sağladım.
             </p>
-            <p>
-                Eğitimim ve sertifikalarım, teknik yetkinliklerimin temelini oluşturuyor. Techcareer.net’ten "Sıfırdan İleri Düzey Web Programlama (HTML5, CSS3, Bootstrap5, Tailwind, JavaScript)" sertifikası, BTK Akademi’den "JavaScript Temelleri" eğitimi ve BELTEK tarafından verilen "108 Saatlik Görsel Programlama (C# ve .NET)" sertifikası ile becerilerimi güçlendirdim. Lisedeki bilişim teknolojileri eğitimim ise bu alandaki ilk deneyimimdi. Ayrıca Unity ve Blender gibi araçlarla da deneyim sahibiyim.
+          </div>
+          <!-- Deneyim 2 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Stajyer Bilişim Teknolojileri ve Yazılım Öğretmeni
+            </h3>
+            <p class="text-primary-purple text-lg mb-1">
+              Münevver Öztürk Ortaokulu, Ankara
             </p>
-            <p>
-                Kişisel projelerimle Frontend ve mobil geliştirme alanlarında deneyim kazandım. Öğrenmeye açık yaklaşımım ve disiplinli çalışma prensiplerimle, web ve mobil projelerde kendimi daha da ileriye taşımayı hedefliyorum.
+            <p class="text-gray-600 text-sm mb-3">Şubat 2020 - Mayıs 2021</p>
+            <p class="text-gray-700">
+              Ortaokul öğrencilerine Scratch ile kodlama ve Tinkercad ile 3D
+              modelleme eğitimi verdim. Eğitsel içerik oluşturma ve öğretim
+              tasarımı deneyimim arttı.
             </p>
+          </div>
+          <!-- Deneyim 3 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Stajyer Bilişim Teknolojileri ve Yazılım Öğretmeni
+            </h3>
+            <p class="text-primary-purple text-lg mb-1">
+              Yasemin Karakaya Ortaokulu, Ankara
+            </p>
+            <p class="text-gray-600 text-sm mb-3">Ekim 2020 - Ocak 2021</p>
+            <p class="text-gray-700">
+              Bilişim derslerinde gözlem yaparak öğretim yöntemlerini ve sınıf
+              yönetimini deneyimledim.
+            </p>
+          </div>
+          <!-- Deneyim 4 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Bilgi İşlem Stajyeri
+            </h3>
+            <p class="text-primary-purple text-lg mb-1">
+              Akdeniz Elektrik Dağıtım A.Ş, Antalya
+            </p>
+            <p class="text-gray-600 text-sm mb-3">Ocak 2016 - Mayıs 2016</p>
+            <p class="text-gray-700">
+              Antalya Mesleki ve Teknik Anadolu Lisesi 12. sınıf stajı
+              kapsamında “Akdeniz Elektrik Dağıtım A.Ş” de yazıcı, ethernet ve
+              bilgisayar arızalarını tespit edip çözerek temel teknik destek
+              becerileri kazandım.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <!-- Eğitim -->
-        <div class="section">
-            <h2>Eğitim</h2>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Hacettepe Üniversitesi, Ankara</h5>
-                    <p class="card-text">Bilgisayar ve Öğretim Teknolojileri Öğretmenliği, 2017 - 2022</p>
-                    <p>Zorunlu Dersler:• Programlama Dilleri I & II • İnternet Tabanlı Programlama (HTML, CSS ve PHP) • Bilgisayar Ağları ve İletişim • İşletim Sistemleri ve Uygulamaları • Proje Geliştirme ve Yönetimi I & II</p>
-                    <p>Seçmeli Dersler:• Algoritma (C#) • Enformasyon Tasarımı (İnfografik) • Bilişim Yönetim Uygulaması (.Net Core) • Eğitsel Oyun ve Oyunlaştırma (Unity, C#) • Eğitim Yazılımı Tasarlama, Geliştirme </p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Antalya Mesleki ve Teknik Anadolu Lisesi, Antalya</h5>
-                    <p class="card-text">Bilişim Teknolojileri (Ağ İşletmenliği Dalı), 2012 - 2016</p>
-                    <p>Alınan Dersler:• Ağ Sistemleri ve Yönlendirme • Sunucu İşletim Sistemi • Açık Kaynak İşletim Sistemi • Bilişim Teknolojilerinin Temelleri • Programlama Temelleri • Temel Elektronik ve Ölçme</p>
-                </div>
-            </div>
+      <!-- Eğitim -->
+      <section class="section mb-10 p-6 bg-white rounded-xl shadow-md">
+        <h2 class="text-3xl font-semibold text-primary-purple mb-6">Eğitim</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Eğitim 1 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Hacettepe Üniversitesi, Ankara
+            </h3>
+            <p class="text-primary-purple text-lg mb-1">
+              Bilgisayar ve Öğretim Teknolojileri Öğretmenliği
+            </p>
+            <p class="text-gray-600 text-sm mb-3">
+              Lisans Derecesi, 2017 - 2022
+            </p>
+            <p class="text-gray-700">
+              <strong class="font-medium">Zorunlu Dersler:</strong> Programlama
+              Dilleri I & II • İnternet Tabanlı Programlama (HTML, CSS ve PHP) •
+              Bilgisayar Ağları ve İletişim • İşletim Sistemleri ve Uygulamaları
+              • Proje Geliştirme ve Yönetimi I & II
+            </p>
+            <p class="text-gray-700 mt-2">
+              <strong class="font-medium">Seçmeli Dersler:</strong> Algoritma
+              (C#) • Enformasyon Tasarımı (İnfografik) • Bilişim Yönetim
+              Uygulaması (.Net Core) • Eğitsel Oyun ve Oyunlaştırma (Unity, C#)
+              • Eğitim Yazılımı Tasarlama, Geliştirme ve Değerlendirme (Mobile
+              App Design, Mobile Mockup)
+            </p>
+          </div>
+          <!-- Eğitim 2 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Antalya Mesleki ve Teknik Anadolu Lisesi, Antalya
+            </h3>
+            <p class="text-primary-purple text-lg mb-1">
+              Bilişim Teknolojileri (Ağ İşletmenliği Dalı)
+            </p>
+            <p class="text-gray-600 text-sm mb-3">Lise, 2012 - 2016</p>
+            <p class="text-gray-700">
+              <strong class="font-medium">Alınan Dersler:</strong> Ağ Sistemleri
+              ve Yönlendirme • Sunucu İşletim Sistemi • Açık Kaynak İşletim
+              Sistemi • Bilişim Teknolojilerinin Temelleri • Programlama
+              Temelleri • Temel Elektronik ve Ölçme
+            </p>
+          </div>
         </div>
+      </section>
 
-        <!-- İş Deneyimi -->
-        <div class="section">
-            <h2>İş Deneyimi</h2>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Jandarma ve Sahil Güvenlik Akademisi, Ankara</h5>
-                    <p class="card-text">Asteğmen (Yedek Subay), Aralık 2023 - Kasım 2024</p>
-                    <p>Kültür ve Spor Şube Müdürlüğü’nde Öğrenci Toplulukları ve Etkinlikleri Subayı olarak 11 ay görev yaptım. Organizasyon, planlama ve ekip koordinasyonu becerilerimi geliştirdim.</p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Münevver Öztürk Ortaokulu, Ankara</h5>
-                    <p class="card-text">Stajyer Bilişim Teknolojileri ve Yazılım Öğretmeni, Şubat 2020 - Mayıs 2021</p>
-                    <p>Ortaokul öğrencilerine Scratch ile kodlama ve Tinkercad ile 3D modelleme eğitimi verdim. Eğitsel içerik oluşturma ve öğretim tasarımı deneyimim arttı.</p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Yasemin Karakaya Ortaokulu, Ankara</h5>
-                    <p class="card-text">Stajyer Bilişim Teknolojileri ve Yazılım Öğretmeni, Ekim 2020 - Ocak 2021</p>
-                    <p>Bilişim derslerinde gözlem yaparak öğretim yöntemlerini ve sınıf yönetimini deneyimledim.</p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Akdeniz Elektrik Dağıtım A.Ş, Antalya</h5>
-                    <p class="card-text">Bilgi İşlem Stajyeri, Ocak 2016 - Mayıs 2016</p>
-                    <p>Antalya Mesleki ve Teknik Anadolu Lisesi 12. sınıf stajı kapsamında “Akdeniz Elektrik Dağıtım A.Ş” de yazıcı, ethernet ve bilgisayar arızalarını tespit edip çözerek temel teknik destek becerileri kazandım.</p>
-                </div>
-            </div>
+      <!-- Projeler -->
+      <section class="section mb-10 p-6 bg-white rounded-xl shadow-md">
+        <h2 class="text-3xl font-semibold text-primary-purple mb-6">
+          Projelerim
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Proje 1 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              E-Commerce App | React Native Mobil Uygulama
+            </h3>
+            <p class="text-gray-700 mb-3">
+              E-Commerce App, React Native ve Expo tabanlı, Defacto uygulamasını
+              referans alarak geliştirilmiş modern bir mobil uygulamadır. VPS
+              sunucumda kurulu Strapi v5 backend'i ile entegre çalışarak dinamik
+              ürün katalogları, kategori ve alt kategori yapıları sunar.
+              Kullanıcılar, geniş ürün yelpazesine kolayca göz atabilir, ürün
+              detaylarını inceleyebilir ve sorunsuz bir alışveriş deneyimi
+              yaşayabilirler. Uygulama, NativeWind ile modern bir kullanıcı
+              arayüzü ve Expo Router ile akıcı ve sezgisel bir navigasyon
+              deneyimi sağlar. Proje, dinamik veri yönetimi, kullanıcı kimlik
+              doğrulama ve kapsamlı arama özellikleriyle zenginleştirilmiştir.
+            </p>
+            <p class="text-gray-600 text-sm mb-4">Haziran 2025</p>
+            <a
+              href="https://github.com/azovayt/e-commerce-app"
+              target="_blank"
+              class="btn-custom inline-flex items-center justify-center px-6 py-3 bg-primary-purple text-white font-medium rounded-full hover:bg-primary-cyan transition-all duration-300"
+            >
+              <i class="fab fa-github mr-2"></i> Projeyi Gör
+            </a>
+          </div>
+          <!-- Proje 2 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Listing App | React Native Mobil Uygulama
+            </h3>
+            <p class="text-gray-700 mb-3">
+              Listing App, React Native ve Expo tabanlı, Vps sunucumdaki Strapi
+              v5 backend ile entegre, sahibinden.com'u referans alan bir mobil
+              uygulama. Kategoriler ve alt kategoriler arasında gezinme, ürün
+              listeleme ve ilan oluşturma özellikleri sunar. NativeWind ile
+              modern UI ve Expo Router ile akıcı navigasyon sağladım.
+            </p>
+            <p class="text-gray-600 text-sm mb-4">Mayıs 2025</p>
+            <a
+              href="https://github.com/azovayt/listing-app"
+              target="_blank"
+              class="btn-custom inline-flex items-center justify-center px-6 py-3 bg-primary-purple text-white font-medium rounded-full hover:bg-primary-cyan transition-all duration-300"
+            >
+              <i class="fab fa-github mr-2"></i> Projeyi Gör
+            </a>
+          </div>
+          <!-- Proje 3 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Bilgisayar ve Mobil Oyunlardaki Siber Zorbalık ve Tehditler
+            </h3>
+            <p class="text-gray-700 mb-3">
+              BTÖ419 Eğitim Yazılımı Tasarlama, Geliştirme ve Değerlendirme
+              (Final Projesi) dersi kapsamında "Bilgisayar/Mobil Oyunlardaki
+              Siber Zorbalık ve Tehditler" konusu ile ilgili öğrencilere siber
+              zorbalık hakkında farkındalık kazanabilecekleri bir mobil uygulama
+              tasarladık.
+            </p>
+            <p class="text-gray-600 text-sm mb-4">Eylül 2021 - Ocak 2022</p>
+            <a
+              href="https://drive.google.com/drive/folders/12y8UYsjYsVzaM2TYc3Q-uJJGKu2fGqsO"
+              target="_blank"
+              class="btn-custom inline-flex items-center justify-center px-6 py-3 bg-primary-purple text-white font-medium rounded-full hover:bg-primary-cyan transition-all duration-300"
+            >
+              <i class="fas fa-external-link-alt mr-2"></i> Projeyi Gör
+            </a>
+          </div>
+          <!-- Proje 4 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Space Platform
+            </h3>
+            <p class="text-gray-700 mb-3">
+              BTÖ422 Eğitsel Oyun ve Oyunlaştırma (Final Projesi) dersi
+              kapsamında 5. ve 6. sınıf öğrencilerine yönelik Algoritma konusunu
+              öğrencinin daha iyi öğrenmesini ve kavramasını sağlamayı
+              amaçlayarak Unity oyun motoru ile 2d oyun geliştirdik.
+            </p>
+            <p class="text-gray-600 text-sm mb-4">Eylül 2021 - Ocak 2022</p>
+            <a
+              href="https://drive.google.com/drive/folders/1AgOfjXLm6hpCMTx6UI1krf9SDRn6Jvgj"
+              target="_blank"
+              class="btn-custom inline-flex items-center justify-center px-6 py-3 bg-primary-purple text-white font-medium rounded-full hover:bg-primary-cyan transition-all duration-300"
+            >
+              <i class="fas fa-external-link-alt mr-2"></i> Projeyi Gör
+            </a>
+          </div>
+          <!-- Proje 5 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Hayat Trafiği Oyunu
+            </h3>
+            <p class="text-gray-700 mb-3">
+              BTÖ202 Programlama Dilleri II (Final Projesi) dersi kapsamında
+              ilkokul 4. sınıf öğrencilerine yönelik trafik levhalarını ve
+              kurallarını öğretmeyi amaçlayarak Unity oyun motoru ile 2d eğitsel
+              oyun geliştirdik.
+            </p>
+            <p class="text-gray-600 text-sm mb-4">Ocak 2018 - Haziran 2019</p>
+            <a
+              href="https://drive.google.com/drive/folders/1XtAd2Iqquux1564iSFTwxlPEfrPbzOaQ"
+              target="_blank"
+              class="btn-custom inline-flex items-center justify-center px-6 py-3 bg-primary-purple text-white font-medium rounded-full hover:bg-primary-cyan transition-all duration-300"
+            >
+              <i class="fas fa-external-link-alt mr-2"></i> Projeyi Gör
+            </a>
+          </div>
         </div>
+      </section>
 
-        <!-- Projeler -->
-        <div class="section">
-            <h2>Projelerim</h2>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">React Native Expo ile Mini E-Ticaret Uygulaması</h5>
-                            <p class="card-text">Geliştirme sürecindeyim...</p>
-                            <p class="card-text">2025</p>
-                            <a href="https://github.com/azovayt/shop-app" target="_blank" class="btn btn-custom">Projeyi Gör</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Bilgisayar ve Mobil Oyunlardaki Siber Zorbalık ve Tehditler</h5>
-                            <p class="card-text">BTÖ419 Eğitim Yazılımı Tasarlama, Geliştirme ve Değerlendirme (Final Projesi) dersi kapsamında "Bilgisayar/Mobil Oyunlardaki Siber Zorbalık ve Tehditler" konusu ile ilgili öğrencilere siber zorbalık hakkında farkındalık kazanabilecekleri bir mobil uygulama tasarladık.</p>
-                            <p class="card-text">2021-2022</p>
-                            <a href="https://drive.google.com/drive/folders/12y8UYsjYsVzaM2TYc3Q-uJJGKu2fGqsO" target="_blank" class="btn btn-custom">Projeyi Gör</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Space Platform</h5>
-                            <p class="card-text">BTÖ422 Eğitsel Oyun ve Oyunlaştırma (Final Projesi) dersi kapsamında 5. ve 6. sınıf öğrencilerine yönelik Algoritma konusunu öğrencinin daha iyi öğrenmesini ve kavramasını sağlamayı amaçlayarak Unity oyun motoru ile 2d oyun geliştirdik.</p>
-                            <p class="card-text">2021-2022</p>
-                            <a href="https://drive.google.com/drive/folders/1AgOfjXLm6hpCMTx6UI1krf9SDRn6Jvgj" target="_blank" class="btn btn-custom">Projeyi Gör</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Hayat Trafiği Oyunu</h5>
-                            <p class="card-text">BTÖ202 Programlama Dilleri II (Final Projesi) dersi kapsamında ilkokul 4. sınıf öğrencilerine yönelik trafik levhalarını ve kurallarını öğretmeyi amaçlayarak Unity oyun motoru ile 2d eğitsel oyun geliştirdik.</p>
-                            <p class="card-text">2018-2019</p>
-                            <a href="https://drive.google.com/drive/folders/1XtAd2Iqquux1564iSFTwxlPEfrPbzOaQ" target="_blank" class="btn btn-custom">Projeyi Gör</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Yetenekler -->
+      <section class="section mb-10 p-6 bg-white rounded-xl shadow-md">
+        <h2 class="text-3xl font-semibold text-primary-purple mb-6">
+          Yetenekler
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >React Native</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >React.js</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >JavaScript/TypeScript</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >HTML5</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >CSS3</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >Bootstrap</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >Tailwind</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >Scratch</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >Tinkercad</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >Blender</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >3DS Max</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >Unity</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >Frontend Tasarımı ve Geliştirme</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >Eğitsel Oyun ve Oyunlaştırma</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >Mobil Uygulama Tasarımı</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >Öğretim Tasarımı ve Uzaktan Eğitim</span
+          >
+          <span
+            class="skill-badge bg-primary-purple text-white px-4 py-2 rounded-full text-sm font-medium"
+            >Eğitim Yazılımı Tasarımı ve Geliştirme</span
+          >
         </div>
+      </section>
 
-        <!-- Yetenekler -->
-        <div class="section">
-            <h2>Yetenekler</h2>
-            <div>
-                <span class="skill-badge">React Native</span>
-                <span class="skill-badge">React.js</span>
-                <span class="skill-badge">JavaScript/TypeScript</span>
-                <span class="skill-badge">HTML5</span>
-                <span class="skill-badge">CSS3</span>
-                <span class="skill-badge">Bootstrap</span>
-                <span class="skill-badge">Tailwind</span>
-                <span class="skill-badge">Scratch</span>
-                <span class="skill-badge">Tinkercad</span>
-                <span class="skill-badge">Blender</span>
-                <span class="skill-badge">3DS Max</span>
-                <span class="skill-badge">Unity</span>
-            </div>
+      <!-- Sertifikalar -->
+      <section class="section mb-10 p-6 bg-white rounded-xl shadow-md">
+        <h2 class="text-3xl font-semibold text-primary-purple mb-6">
+          Sertifikalar
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Sertifika 1 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Javascript Temelleri - BTK Akademi
+            </h3>
+            <p class="text-gray-600 text-sm">20 Şubat 2025</p>
+          </div>
+          <!-- Sertifika 2 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              Sıfırdan İleri Düzey Web Programlama (HTML5, CSS3, Bootstrap5,
+              Tailwind, Javascript) - Techcareer.net
+            </h3>
+            <p class="text-gray-600 text-sm">12 Şubat 2025</p>
+          </div>
+          <!-- Sertifika 3 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              108 Saatlik Bilgisayar Destekli Üç Boyutlu Tasarım ve Animasyon
+              (Autodesk 3ds Max) - BELTEK
+            </h3>
+            <p class="text-gray-600 text-sm">15 Haziran 2022</p>
+          </div>
+          <!-- Sertifika 4 -->
+          <div
+            class="card p-6 bg-white rounded-lg shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+          >
+            <h3 class="text-xl font-semibold text-dark-text mb-2">
+              108 Saatlik Görsel Programlama Kursu (C# ve .NET) - BELTEK
+            </h3>
+            <p class="text-gray-600 text-sm">15 Mart 2022</p>
+          </div>
         </div>
-
-        <!-- Sertifikalar -->
-        <div class="section">
-            <h2>Sertifikalar</h2>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Javascript Temelleri - BTK Akademi</h5>
-                    <p class="card-text">20 Şubat 2025</p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Sıfırdan İleri Düzey Web Programlama (HTML5, CSS3, Bootstrap5, Tailwind, Javascript) - Techcareer.net</h5>
-                    <p class="card-text">12 Şubat 2025</p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">108 Saatlik Bilgisayar Destekli Üç Boyutlu Tasarım ve Animasyon (Autodesk 3ds Max) - BELTEK (Gazi Üniversitesi ve Ankara Büyükşehir Belediyesi Teknik Eğitim Kursları)</h5>
-                    <p class="card-text">15 Haziran 2022</p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">108 Saatlik Görsel Programlama Kursu (C# ve .NET) - BELTEK (Gazi Üniversitesi ve Ankara Büyükşehir Belediyesi Teknik Eğitim Kursları)</h5>
-                    <p class="card-text">15 Mart 2022</p>
-                </div>
-            </div>
-        </div>
+      </section>
     </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>
