@@ -240,6 +240,7 @@ function drawBoard() {
 function addBlock(dir) {
   if (isRunning) return;
   codeBlocks.push({ direction: dir, repeat: currentRepeat });
+  playSFX('pop'); // ⭐ Blok eklenince ses çal
   renderWorkspace();
 }
 
@@ -264,6 +265,7 @@ function renderWorkspace() {
     el.onclick = () => {
       if (!isRunning) {
         codeBlocks.splice(i, 1);
+        playSFX('pop'); // ⭐ Blok silinince ses çal
         renderWorkspace();
       }
     };
@@ -291,6 +293,7 @@ async function runCode() {
 
       if (nr < 0 || nr >= GRID_SIZE || nc < 0 || nc >= GRID_SIZE) {
         await sleep(500);
+        playSFX('buzz'); // ⭐ Duvara çarpınca ses çal
         if (blocks[bi]) blocks[bi].classList.remove("running");
         isRunning = false;
         showFailModal("🙈", "Oy! Duvara çarptım!<br>Kodlarını düzelt ve tekrar dene.");
@@ -299,6 +302,7 @@ async function runCode() {
 
       if (obstacles.some((o) => o.row === nr && o.col === nc)) {
         await sleep(500);
+        playSFX('buzz'); // ⭐ Engele çarpınca ses çal
         if (blocks[bi]) blocks[bi].classList.remove("running");
         isRunning = false;
         showFailModal("🚧", "Engele çarptım!<br>Engellerin etrafından dolaş.");
@@ -313,6 +317,7 @@ async function runCode() {
         targets.splice(coinIndex, 1);
         collectedCoins++;
         updateCoinCounter();
+        playSFX('ding'); // ⭐ Coin toplayınca ses çal
       }
 
       drawBoard();
