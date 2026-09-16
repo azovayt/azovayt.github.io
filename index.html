@@ -386,7 +386,6 @@
         border-radius: 12px;
       }
 
-      /* Coin sayacı */
       .coin-counter {
         font-size: 24px;
         font-weight: bold;
@@ -762,20 +761,7 @@
         }
       }
 
-      #message {
-        font-size: 28px;
-        font-weight: bold;
-        min-height: 35px;
-        text-align: center;
-        flex-shrink: 0;
-      }
-      .win {
-        color: #2e7d32;
-      }
-      .lose {
-        color: #c62828;
-      }
-
+      /* ================= MODALLAR ================= */
       .modal {
         display: none;
         position: fixed;
@@ -819,6 +805,7 @@
         font-size: 24px;
       }
 
+      /* Başarı modalı */
       .game-complete-icon {
         font-size: 120px;
         margin-bottom: 20px;
@@ -865,6 +852,62 @@
         transform: translateY(-2px);
         box-shadow:
           0 8px 0 #2e7d32,
+          0 10px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      /* ⭐⭐⭐ BAŞARISIZLIK MODALI ⭐⭐⭐ */
+      .fail-icon {
+        font-size: 100px;
+        margin-bottom: 20px;
+        animation: shake 0.6s ease-in-out;
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0) rotate(0deg);
+        }
+        20% {
+          transform: translateX(-10px) rotate(-5deg);
+        }
+        40% {
+          transform: translateX(10px) rotate(5deg);
+        }
+        60% {
+          transform: translateX(-10px) rotate(-5deg);
+        }
+        80% {
+          transform: translateX(10px) rotate(5deg);
+        }
+      }
+      .fail-title {
+        font-size: 42px;
+        color: #e53935;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+      }
+      .fail-text {
+        font-size: 22px;
+        color: #555;
+        margin-bottom: 30px;
+        line-height: 1.5;
+      }
+      .btn-retry {
+        background: linear-gradient(135deg, #42a5f5, #1976d2);
+        color: white;
+        padding: 16px 45px;
+        font-size: 22px;
+        border-radius: 50px;
+        box-shadow:
+          0 6px 0 #0d47a1,
+          0 8px 15px rgba(0, 0, 0, 0.2);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .btn-retry:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 8px 0 #0d47a1,
           0 10px 20px rgba(0, 0, 0, 0.25);
       }
     </style>
@@ -993,10 +1036,10 @@
             </div>
           </div>
         </div>
-        <div id="message"></div>
       </div>
     </div>
 
+    <!-- SEVİYE TAMAMLANDI MODALI (BAŞARI) -->
     <div class="modal" id="levelCompleteModal">
       <div class="modal-content">
         <div class="modal-icon">🎉</div>
@@ -1006,6 +1049,7 @@
       </div>
     </div>
 
+    <!-- OYUN TAMAMLANDI MODALI -->
     <div class="modal" id="gameCompleteModal">
       <div class="modal-content">
         <div class="game-complete-icon">🏆</div>
@@ -1017,6 +1061,16 @@
         <button class="btn-home" onclick="goHomeFromComplete()">
           🏠 Ana Sayfaya Dön
         </button>
+      </div>
+    </div>
+
+    <!-- ⭐⭐⭐ BAŞARISIZLIK MODALI (YENİ) ⭐⭐⭐ -->
+    <div class="modal" id="failModal">
+      <div class="modal-content">
+        <div class="fail-icon" id="failIcon">🙈</div>
+        <div class="fail-title">Olamadı!</div>
+        <div class="fail-text" id="failText">Tekrar dene!</div>
+        <button class="btn-retry" onclick="retryLevel()">🔄 Tekrar Dene</button>
       </div>
     </div>
 
@@ -1183,7 +1237,8 @@
       const TOTAL_LEVELS = 10;
 
       let player = { row: 6, col: 0 };
-      let targets = []; // Birden fazla coin pozisyonu
+      let targets = [];
+      let initialTargets = []; // Sıfırlama için başlangıç coinleri
       let collectedCoins = 0;
       let totalCoins = 0;
       let obstacles = [],
@@ -1191,11 +1246,10 @@
         isRunning = false,
         currentRepeat = 1;
 
-      // ⭐⭐⭐ SEVİYEYE GÖRE COİN SAYISI ⭐⭐⭐
       function getCoinCount(lv) {
-        if (lv < 3) return 1; // Seviye 1, 2, 3 → 1 coin
-        if (lv < 6) return 2; // Seviye 4, 5, 6 → 2 coin
-        return 3; // Seviye 7, 8, 9, 10 → 3 coin
+        if (lv < 3) return 1;
+        if (lv < 6) return 2;
+        return 3;
       }
 
       function setRepeat(num) {
@@ -1205,7 +1259,6 @@
         });
       }
 
-      // ⭐⭐⭐ TÜM COİNLERE ULAŞILABİLİRLİK KONTROLÜ ⭐⭐⭐
       function allTargetsReachable(startRow, startCol, targetsList, obs) {
         const visited = Array(GRID_SIZE)
           .fill(null)
@@ -1222,7 +1275,6 @@
 
         while (queue.length > 0) {
           const [r, c] = queue.shift();
-          // Bu kare bir hedef mi?
           targetsList.forEach((t, idx) => {
             if (t.row === r && t.col === c) reached.add(idx);
           });
@@ -1252,7 +1304,6 @@
         return { min: 12, max: 15 };
       }
 
-      // ⭐⭐⭐ ÇOKLU COİN SİSTEMİ ⭐⭐⭐
       function generateSolvableLevel(theme) {
         const pp = { row: 6, col: 0 };
         const range = getObstacleCount(currentLevel);
@@ -1266,23 +1317,17 @@
             return seededRandom(rng);
           };
 
-          // Birden fazla coin pozisyonu üret
           const newTargets = [];
           let targetAttempts = 0;
           while (newTargets.length < coinCount && targetAttempts < 200) {
             targetAttempts++;
             const tr = Math.floor(nextRandom() * GRID_SIZE);
             const tc = Math.floor(nextRandom() * GRID_SIZE);
-
-            // Oyuncuyla çakışmasın
             if (tr === pp.row && tc === pp.col) continue;
-            // Diğer coinlerle çakışmasın
             if (newTargets.some((t) => t.row === tr && t.col === tc)) continue;
-
             newTargets.push({ row: tr, col: tc });
           }
 
-          // Engel üret
           const num =
             Math.floor(nextRandom() * (range.max - range.min + 1)) + range.min;
           const obs = [];
@@ -1297,17 +1342,11 @@
             obs.push({ row: or2, col: oc, emoji: theme.obstacles[0] });
           }
 
-          // TÜM coinlere ulaşılabilir mi kontrol et
           if (allTargetsReachable(pp.row, pp.col, newTargets, obs)) {
             return { player: pp, targets: newTargets, obstacles: obs };
           }
         }
-        // Fallback: engelsiz harita
-        return {
-          player: pp,
-          targets: [{ row: 0, col: 6 }],
-          obstacles: [],
-        };
+        return { player: pp, targets: [{ row: 0, col: 6 }], obstacles: [] };
       }
 
       function startTheme(theme) {
@@ -1333,10 +1372,11 @@
         const theme = themes[currentTheme],
           data = generateSolvableLevel(theme);
         player = { ...data.player };
-        targets = data.targets.map((t) => ({ ...t })); // Kopyala
+        targets = data.targets.map((t) => ({ ...t }));
+        initialTargets = data.targets.map((t) => ({ ...t })); // Başlangıç pozisyonlarını sakla
+        obstacles = data.obstacles;
         collectedCoins = 0;
         totalCoins = targets.length;
-        obstacles = data.obstacles;
         codeBlocks = [];
         currentRepeat = 1;
         setRepeat(1);
@@ -1348,7 +1388,6 @@
         updateCoinCounter();
         renderWorkspace();
         drawBoard();
-        setMessage("");
       }
 
       function updateCoinCounter() {
@@ -1392,6 +1431,28 @@
             ? `Seviye ${currentLevel + 1} tamamlandı!`
             : "Son seviyeyi tamamladın! 🏆";
         m.classList.add("active");
+      }
+
+      // ⭐⭐⭐ BAŞARISIZLIK MODALINI GÖSTER ⭐⭐⭐
+      function showFailModal(icon, message) {
+        document.getElementById("failIcon").innerText = icon;
+        document.getElementById("failText").innerText = message;
+        document.getElementById("failModal").classList.add("active");
+      }
+
+      // ⭐⭐⭐ TEKRAR DENE - Her şeyi sıfırla, temizden başla ⭐⭐⭐
+      function retryLevel() {
+        document.getElementById("failModal").classList.remove("active");
+        // Karakteri başa döndür
+        player = { row: 6, col: 0 };
+        // Coinleri başlangıç haline getir
+        targets = initialTargets.map((t) => ({ ...t }));
+        collectedCoins = 0;
+        updateCoinCounter();
+        // ⭐ KODLARI SIFIRLA - Temizden başla ⭐
+        codeBlocks = [];
+        renderWorkspace();
+        drawBoard();
       }
 
       function drawBoard() {
@@ -1458,7 +1519,6 @@
       async function runCode() {
         if (isRunning || codeBlocks.length === 0) return;
         isRunning = true;
-        setMessage("");
         const blocks = document
           .getElementById("codeStrip")
           .querySelectorAll(".code-block");
@@ -1476,24 +1536,35 @@
             if (block.direction === "down") nr++;
             if (block.direction === "left") nc--;
             if (block.direction === "right") nc++;
+
+            // ⭐⭐⭐ DUVARA ÇARPTI - MODAL GÖSTER ⭐⭐⭐
             if (nr < 0 || nr >= GRID_SIZE || nc < 0 || nc >= GRID_SIZE) {
               await sleep(500);
-              setMessage("🙈 Oy! Duvara çarptım!", "lose");
               if (blocks[bi]) blocks[bi].classList.remove("running");
               isRunning = false;
+              showFailModal(
+                "🙈",
+                "Oy! Duvara çarptım!<br>Kodlarını düzelt ve tekrar dene.",
+              );
               return;
             }
+
+            // ⭐⭐⭐ ENGELE ÇARPTI - MODAL GÖSTER ⭐⭐⭐
             if (obstacles.some((o) => o.row === nr && o.col === nc)) {
               await sleep(500);
-              setMessage("🚧 Engele çarptım!", "lose");
               if (blocks[bi]) blocks[bi].classList.remove("running");
               isRunning = false;
+              showFailModal(
+                "🚧",
+                "Engele çarptım!<br>Engellerin etrafından dolaş.",
+              );
               return;
             }
+
             player.row = nr;
             player.col = nc;
 
-            // Coin toplama kontrolü
+            // Coin toplama
             const coinIndex = targets.findIndex(
               (t) => t.row === nr && t.col === nc,
             );
@@ -1505,10 +1576,9 @@
 
             drawBoard();
 
-            // Tüm coinler toplandı mı?
+            // Tüm coinler toplandı
             if (targets.length === 0) {
               await sleep(500);
-              setMessage("🎉 Harika! Tüm altınları topladım!", "win");
               if (blocks[bi]) blocks[bi].classList.remove("running");
               isRunning = false;
               showLevelComplete();
@@ -1519,38 +1589,34 @@
           if (blocks[bi]) blocks[bi].classList.remove("running");
           bi++;
         }
-        if (targets.length > 0)
-          setMessage(`🤔 ${targets.length} altın kaldı. Tekrar dene!`, "lose");
-        isRunning = false;
+
+        // ⭐⭐⭐ KOD BİTTİ AMA COİNLER TAMAMLANMADI - MODAL GÖSTER ⭐⭐⭐
+        if (targets.length > 0) {
+          isRunning = false;
+          showFailModal(
+            "🤔",
+            `Kodların bitti ama ${targets.length} altın kaldı!<br>Kodlarına devam et.`,
+          );
+        } else {
+          isRunning = false;
+        }
       }
 
       function resetGame() {
         if (isRunning) return;
-        const theme = themes[currentTheme];
         player = { row: 6, col: 0 };
-        // Haritayı yeniden yükle (coinler geri gelsin)
-        const data = generateSolvableLevel(theme);
-        targets = data.targets.map((t) => ({ ...t }));
+        targets = initialTargets.map((t) => ({ ...t }));
         collectedCoins = 0;
-        totalCoins = targets.length;
-        obstacles = data.obstacles;
         codeBlocks = [];
         renderWorkspace();
         drawBoard();
         updateCoinCounter();
-        setMessage("");
       }
 
       function clearWorkspace() {
         if (isRunning) return;
         codeBlocks = [];
         renderWorkspace();
-      }
-
-      function setMessage(t, type) {
-        const m = document.getElementById("message");
-        m.innerText = t;
-        m.className = type || "";
       }
 
       function sleep(ms) {
