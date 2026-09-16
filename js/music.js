@@ -1,4 +1,4 @@
-// ================= SAKİN MÜZİK =================
+// ================= SES VE MÜZİK YÖNETİMİ =================
 let audioContext = null;
 let musicPlaying = false;
 let musicTimeout = null;
@@ -21,6 +21,50 @@ const calmMelody = [
 function initAudio() {
   if (!audioContext) {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioContext.state === 'suspended') {
+    audioContext.resume();
+  }
+}
+
+// ⭐⭐⭐ YENİ: MİKRO SES EFEKTLERİ (SFX) ⭐⭐⭐
+function playSFX(type) {
+  initAudio(); // Ses motorunun hazır olduğundan emin ol
+  const now = audioContext.currentTime;
+  const osc = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+  
+  osc.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+
+  if (type === 'pop') {
+    // Kod bloğu ekleme/çıkarma sesi (Kısa, neşeli "pop")
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(600, now);
+    osc.frequency.exponentialRampToValueAtTime(800, now + 0.1);
+    gainNode.gain.setValueAtTime(0.1, now);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+    osc.start(now);
+    osc.stop(now + 0.1);
+  } 
+  else if (type === 'ding') {
+    // Coin toplama veya seviye bitirme sesi (Parlak "ding")
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, now); // A5 notası
+    gainNode.gain.setValueAtTime(0.15, now);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+    osc.start(now);
+    osc.stop(now + 0.3);
+  } 
+  else if (type === 'buzz') {
+    // Engele veya duvara çarpma sesi (Düşük, uyarıcı "buzz")
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(150, now);
+    osc.frequency.linearRampToValueAtTime(100, now + 0.2);
+    gainNode.gain.setValueAtTime(0.1, now);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+    osc.start(now);
+    osc.stop(now + 0.2);
   }
 }
 
